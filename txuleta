@@ -1,0 +1,9 @@
+//executeQuery con PreparedStatement
+PreparedStatement pst = super.conexion.prepareStatement("select * from usuarios where codigo = ?");
+pst.setString(1, codigo);
+ResultSet rs = pst.executeQuery();
+
+if(rs.next){
+............
+.......
+}
