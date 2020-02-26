@@ -7,3 +7,17 @@ if(rs.next){
 ............
 .......
 }
+
+
+//algunas sentencias SQL
+select inscripciones.*, usuarios.* from inscripciones join usuarios on inscripciones.id_usuario= usuarios.id where inscripciones.id_actividad = ?
+								
+DELETE FROM `inscripciones` WHERE id_usuario=? and id_actividad=?
+			
+insert into usuarios (nombre_apellido, dni, codigo) values (?, ?, ?)
+			
+select * from usuarios where codigo = ?
+			
+select * from actividades where id= ?
+			
+UPDATE actividades SET dias_semana = ? WHERE id = ?
