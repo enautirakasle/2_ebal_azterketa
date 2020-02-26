@@ -8,6 +8,13 @@ if(rs.next){
 .......
 }
 
+while(rs.next()){
+..........
+......rs.getString("nombreCampo");
+......rs.getInt("nombreCampo");
+..............
+}
+
 
 //algunas sentencias SQL
 select inscripciones.*, usuarios.* from inscripciones join usuarios on inscripciones.id_usuario= usuarios.id where inscripciones.id_actividad = ?
