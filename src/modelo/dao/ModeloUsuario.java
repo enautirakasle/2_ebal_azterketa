@@ -27,6 +27,30 @@ public class ModeloUsuario extends Conector{
 		return false;
 		
 	}
+	
+	public Usuario get(String codigo) {
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("select * from usuarios where codigo = ?");
+			pst.setString(1, codigo);
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()){
+				Usuario usuario = new Usuario();
+				usuario.setId(rs.getInt("id"));
+				usuario.setNombreApellido(rs.getString("nombre_apellido"));
+				usuario.setDni(rs.getString("dni"));
+				usuario.setCodigo(rs.getString("codigo"));
+				
+				return usuario;
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 
 	public void insert(Usuario usuario) {
 		try {

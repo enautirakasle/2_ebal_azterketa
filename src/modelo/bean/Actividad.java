@@ -56,11 +56,18 @@ public class Actividad {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+	
 	public ArrayList<Inscripcion> getIscripciones() {
 		return iscripciones;
 	}
 	public void setIscripciones(ArrayList<Inscripcion> iscripciones) {
 		this.iscripciones = iscripciones;
+	}
+	
+	@Override
+	public String toString() {
+		return "Actividad [id=" + id + ", nombre=" + nombre + ", fecha_inicio=" + fecha_inicio + ", dias=" + dias
+				+ ", horas=" + horas + ", maxParticipantes=" + maxParticipantes + ", precio=" + precio + "]";
 	}
 	
 

@@ -46,4 +46,47 @@ public class ModeloActividad extends Conector{
 		return null;
 	}
 
+	public Actividad get(int idActividad) {
+		
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("select * from actividades where id= ?");
+			pst.setInt(1, idActividad);
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()){
+				Actividad actividad = new Actividad();
+				actividad.setId(rs.getInt("id"));
+				actividad.setNombre(rs.getString("nombre"));
+				actividad.setDias(rs.getString("dias_semana"));
+				actividad.setFecha_inicio(rs.getDate("fecha_inicio"));
+				actividad.setHoras(rs.getInt("horas"));
+				actividad.setMaxParticipantes(rs.getInt("max_participantes"));
+				actividad.setPrecio(rs.getDouble("precio"));
+				
+				return actividad;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
+	public void update(Actividad actividad) {
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("UPDATE actividades SET dias_semana = ? WHERE id = ?");
+			pst.setString(1, actividad.getDias());
+			pst.setInt(2, actividad.getId());
+			pst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+
 }
