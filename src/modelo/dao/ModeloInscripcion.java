@@ -54,5 +54,18 @@ public class ModeloInscripcion extends Conector{
 		return usuarios;
 		
 	}
+
+	public void delete(int idActividad, int idUsuario) {
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("DELETE FROM `inscripciones` WHERE id_usuario=? and id_actividad=?");
+			pst.setInt(1, idUsuario);
+			pst.setInt(2, idActividad);
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }

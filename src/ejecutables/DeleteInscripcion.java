@@ -17,23 +17,14 @@ public class DeleteInscripcion {
 		System.out.println("Introduce un id de actividad");
 		int idActividad = Integer.parseInt(scan.nextLine());
 		
-		ModeloActividad mActividad = new ModeloActividad();
-		Actividad actividad = mActividad.get(idActividad);
-		
-		System.out.println("Introduce un codigo de usuario");
+		System.out.println("Introduce el codigo de usuario");
 		String codigoUsuario = scan.nextLine();
 		
 		ModeloUsuario mUsuario = new ModeloUsuario();
 		Usuario usuario = mUsuario.get(codigoUsuario);
 		
-		Inscripcion inscripcion = new Inscripcion();
-		inscripcion.setActividad(actividad);
-		inscripcion.setUsuario(usuario);
-		
-		
 		ModeloInscripcion mInscripcion = new ModeloInscripcion();
-		mInscripcion.delete(inscripcion);
-		System.out.println("Borrada la inscripcion");
+		mInscripcion.delete(idActividad, usuario.getId());
 		
 		
 
